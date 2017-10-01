@@ -1,4 +1,4 @@
-package net.straycalico.kotlindddsample
+package net.straycalico.ecsample
 
 import org.junit.Test
 import org.junit.runner.RunWith
