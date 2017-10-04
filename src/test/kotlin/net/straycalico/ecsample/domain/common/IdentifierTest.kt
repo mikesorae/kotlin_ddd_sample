@@ -30,4 +30,12 @@ class IdentifierTest {
         assertNotNull(id.hashCode())
     }
 
+    @Test
+    fun testInherit() {
+        class MyId(value: Long): Identifier<Long>(value)
+
+        val myId = MyId(100)
+        assertEquals(100, myId.value)
+    }
+
 }
