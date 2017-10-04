@@ -6,8 +6,7 @@ import javax.persistence.*
 
 @Embeddable
 class CustomerId(
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "id")
+        @Column(name = "customer_id")
         override val value: Long?
 ): Identifier<Long?>(value), Serializable {
     internal constructor(): this(value = null)
@@ -24,7 +23,3 @@ class Customer(
         val customerId: CustomerId? = CustomerId(),
         val name: String? = null
 ): net.straycalico.ecsample.domain.common.Entity<CustomerId>(customerId)
-{
-    // @Embeddableと@GeneratedValueは同時設定できないため、Schema側でAutoIncrementしておく必要がある
-    // またはID発行専用のサービスを作成する
-}

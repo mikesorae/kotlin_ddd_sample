@@ -1,12 +1,14 @@
 package net.straycalico.ecsample.controller
 
 import net.straycalico.ecsample.domain.customer.Customer
+import net.straycalico.ecsample.domain.customer.CustomerId
 import net.straycalico.ecsample.domain.customer.CustomerRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import java.util.*
 import javax.validation.Valid
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
@@ -27,7 +29,8 @@ class CustomerController {
 
     @PostMapping("customer")
     fun createCustomers(@Valid @RequestBody form: CustomerForm): Customer {
-        val customer = Customer(name = form.name)
+        val customerId = CustomerId(123)
+        val customer = Customer(customerId, form.name)
         return repository.saveAndFlush(customer)
     }
 }
