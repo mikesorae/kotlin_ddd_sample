@@ -5,7 +5,7 @@ import org.junit.Test
 
 class EntityTest {
     class MyId(value: String): Identifier<String>(value)
-    class MyEntity(id: MyId): Entity<String, MyId>(id)
+    class MyEntity(id: MyId): Entity<MyId>(id)
 
     @Test
     fun testCreate() {

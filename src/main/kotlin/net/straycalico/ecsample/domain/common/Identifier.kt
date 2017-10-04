@@ -3,7 +3,7 @@ package net.straycalico.ecsample.domain.common
 /**
  * Entity識別子用クラス
  */
-abstract class Identifier<T: Any> (open val value: T) { // nullで初期化させないためにAnyを指定
+abstract class Identifier<out T> (open val value: T) {
     override fun equals(other: Any?): Boolean {
         return when (other) {
             is Identifier<*> -> this.value == other.value
@@ -12,6 +12,6 @@ abstract class Identifier<T: Any> (open val value: T) { // nullで初期化さ�
     }
 
     override fun hashCode(): Int {
-        return value.hashCode()
+        return value?.let { it!!.hashCode() } ?: -1
     }
 }
