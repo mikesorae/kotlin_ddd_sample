@@ -1,6 +1,7 @@
 package net.straycalico.ecsample.domain.common
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Test
 
 class IdentifierTest {
@@ -21,6 +22,12 @@ class IdentifierTest {
     fun testNotEquals() {
         assert(Identifier(1) != Identifier(2))
         assert(Identifier("foo") != Identifier("bar"))
+    }
+
+    @Test
+    fun testHashcode() {
+        val id = Identifier(1)
+        assertNotNull(id.hashCode())
     }
 
 }
