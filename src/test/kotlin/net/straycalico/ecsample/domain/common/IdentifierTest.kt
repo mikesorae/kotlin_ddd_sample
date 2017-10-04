@@ -6,27 +6,30 @@ import org.junit.Test
 
 class IdentifierTest {
 
+    class LongIdentifier(value: Long): Identifier<Long>(value)
+    class StringIdentifier(value: String): Identifier<String>(value)
+
     @Test
     fun testCreate() {
-        val id = Identifier(1)
+        val id = LongIdentifier(1)
         assertEquals(id.value, 1)
     }
 
     @Test
     fun testEquals() {
-        assert(Identifier(1) == Identifier(1))
-        assert(Identifier("foo") == Identifier("foo"))
+        assert(LongIdentifier(1) == LongIdentifier(1))
+        assert(StringIdentifier("foo") == StringIdentifier("foo"))
     }
 
     @Test
     fun testNotEquals() {
-        assert(Identifier(1) != Identifier(2))
-        assert(Identifier("foo") != Identifier("bar"))
+        assert(LongIdentifier(1) != LongIdentifier(2))
+        assert(StringIdentifier("foo") != StringIdentifier("bar"))
     }
 
     @Test
     fun testHashcode() {
-        val id = Identifier(1)
+        val id = LongIdentifier(1)
         assertNotNull(id.hashCode())
     }
 
