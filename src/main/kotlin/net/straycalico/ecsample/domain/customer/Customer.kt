@@ -14,7 +14,7 @@ class Customer(
         val name: String
 )
 {
-    // @Embeddableと@GeneratedValueは同時に設定できないため、Schema側でAutoIncrementしておく必要がある
+    // @Embeddableと@GeneratedValueは同時設定できないため、Schema側でAutoIncrementしておく必要がある
     // またはID発行専用のサービスを作成する
     @Embeddable
     data class CustomerId(
