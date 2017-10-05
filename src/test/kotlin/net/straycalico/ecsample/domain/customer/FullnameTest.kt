@@ -11,4 +11,18 @@ class FullnameTest {
         assertEquals("last", name.last)
         assertEquals("first last", name.toString())
     }
+
+    @Test
+    fun testEquals() {
+        val name1 = Fullname("taro", "yamada")
+        val name2 = Fullname("taro", "yamada")
+        assert(name1 == name2)
+    }
+
+    @Test
+    fun testNotEquals() {
+        val name1 = Fullname("taro", "yamada")
+        val name2 = Fullname("tare", "yamada")
+        assert(name1 != name2)
+    }
 }
