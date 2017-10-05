@@ -2,9 +2,7 @@ package net.straycalico.ecsample.domain.cart
 
 import net.straycalico.ecsample.domain.common.Identifier
 import net.straycalico.ecsample.domain.item.ItemId
-import javax.persistence.Embeddable
-import javax.persistence.EmbeddedId
-import javax.persistence.Entity
+import javax.persistence.*
 
 @Embeddable
 class CartId(
@@ -16,8 +14,12 @@ class CartId(
 @Entity
 class Cart(
         @EmbeddedId
+        @AttributeOverride(name = "value", column = Column(name = "cart_id"))
         val cartId: CartId
 ): net.straycalico.ecsample.domain.common.Entity<CartId>(cartId) {
+    private constructor(): this(CartId())
+
+    @ElementCollection
     private val items: MutableList<ItemId> = mutableListOf()
 
     fun currentItems() = this.items.toMutableList()
