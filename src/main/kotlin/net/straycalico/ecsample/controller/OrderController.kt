@@ -2,6 +2,7 @@ package net.straycalico.ecsample.controller
 
 import net.straycalico.ecsample.domain.customer.Contact
 import net.straycalico.ecsample.domain.customer.Customer
+import net.straycalico.ecsample.domain.customer.Fullname
 import net.straycalico.ecsample.domain.order.Order
 import net.straycalico.ecsample.domain.order.OrderId
 import net.straycalico.ecsample.domain.order.OrderRepository
@@ -18,9 +19,10 @@ import javax.validation.constraints.Size
 @RestController
 class OrderController {
     data class OrderForm(
-            @field:NotNull
             @field:Size(min = 4, max = 32)
-            val name: String
+            val firstName: String,
+            @field:Size(min = 4, max = 32)
+            val secondName: String
     )
 
     @Autowired
@@ -32,7 +34,7 @@ class OrderController {
     @PostMapping("order")
     fun createOrder(@Valid @RequestBody form: OrderForm): Order {
         val orderId = OrderId(Random().nextInt(Int.MAX_VALUE).toLong())
-        val customer = Customer(form.name, Contact("dummy", "00000"))
+        val customer = Customer(Fullname(form.firstName, form.secondName), Contact("dummy", "00000"))
         val order = Order(orderId, customer)
         return repository.saveAndFlush(order)
     }

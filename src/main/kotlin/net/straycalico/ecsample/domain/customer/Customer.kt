@@ -19,7 +19,8 @@ data class Contact(
  */
 @Entity
 class Customer(
-        val name: String,
+        @Convert(converter = FullnameConverter::class)
+        val name: Fullname,
         @Embedded
         @AttributeOverrides(
             AttributeOverride(name = "mail", column = Column(name = "mail")),
@@ -27,5 +28,5 @@ class Customer(
         )
         val contact: Contact
 ):IdentifiedDomainObject() {
-    internal constructor(): this("", Contact())
+    internal constructor(): this(Fullname("", ""), Contact())
 }
