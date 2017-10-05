@@ -1,10 +1,18 @@
 package net.straycalico.ecsample.domain.common
 
 import java.io.Serializable
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.MappedSuperclass
 
 /**
  * 代理主キーを隠蔽するためのスーパーレイヤ
  */
-abstract class IdentifiedDomainObject: Serializable {
-    protected var id: Long? = null
+@MappedSuperclass
+abstract class IdentifiedDomainObject() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected val id: Long? = null
+
 }

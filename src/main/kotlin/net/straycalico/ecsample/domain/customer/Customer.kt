@@ -1,5 +1,6 @@
 package net.straycalico.ecsample.domain.customer
 
+import net.straycalico.ecsample.domain.common.IdentifiedDomainObject
 import javax.persistence.*
 
 @Embeddable
@@ -25,10 +26,6 @@ class Customer(
             AttributeOverride(name = "tel", column = Column(name = "tel"))
         )
         val contact: Contact
-) {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
-
+):IdentifiedDomainObject() {
     internal constructor(): this("", Contact())
 }
