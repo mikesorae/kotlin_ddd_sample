@@ -28,10 +28,10 @@ class OrderController {
     @Autowired
     lateinit var repository: OrderRepository
 
-    @GetMapping("order")
+    @GetMapping("/orders")
     fun getOrders() = repository.findAll()
 
-    @PostMapping("order")
+    @PostMapping("/orders")
     fun createOrder(@Valid @RequestBody form: OrderForm): Order {
         val orderId = OrderId(Random().nextInt(Int.MAX_VALUE).toLong())
         val customer = Customer(Fullname(form.firstName, form.secondName), Contact("dummy", "00000"))
