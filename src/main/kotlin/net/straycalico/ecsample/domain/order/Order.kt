@@ -19,7 +19,7 @@ class Order(
                 AttributeOverride(name = "value", column = Column(name = "order_id"))
         )
         val orderId: OrderId,
-        @OneToOne(cascade = arrayOf(CascadeType.PERSIST))
+        @OneToOne(cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name = "customer_id")
         val customer: Customer
 ): net.straycalico.ecsample.domain.common.Entity<OrderId>(orderId) {
