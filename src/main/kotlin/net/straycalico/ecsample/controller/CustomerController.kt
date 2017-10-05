@@ -1,5 +1,6 @@
 package net.straycalico.ecsample.controller
 
+import net.straycalico.ecsample.domain.customer.Contact
 import net.straycalico.ecsample.domain.customer.Customer
 import net.straycalico.ecsample.domain.customer.CustomerId
 import net.straycalico.ecsample.domain.customer.CustomerRepository
@@ -30,7 +31,7 @@ class CustomerController {
     @PostMapping("customer")
     fun createCustomers(@Valid @RequestBody form: CustomerForm): Customer {
         val customerId = CustomerId(123)
-        val customer = Customer(customerId, form.name)
+        val customer = Customer(customerId, form.name, Contact("", ""))
         return repository.saveAndFlush(customer)
     }
 }

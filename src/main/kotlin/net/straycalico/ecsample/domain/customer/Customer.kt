@@ -12,6 +12,14 @@ class CustomerId(
     internal constructor(): this(value = null)
 }
 
+@Embeddable
+data class Contact(
+        val mail: String,
+        val tel: String
+) {
+    internal constructor(): this("", "")
+}
+
 /**
  * ECサイトの顧客エンティティ
  *
@@ -20,6 +28,14 @@ class CustomerId(
 @Entity
 class Customer(
         @EmbeddedId
-        val customerId: CustomerId? = CustomerId(),
-        val name: String? = null
-): net.straycalico.ecsample.domain.common.Entity<CustomerId>(customerId)
+        val customerId: CustomerId,
+        val name: String,
+        @Embedded
+        @AttributeOverrides(
+            AttributeOverride(name = "mail", column = Column(name = "mail")),
+            AttributeOverride(name = "tel", column = Column(name = "tel"))
+        )
+        val contact: Contact
+): net.straycalico.ecsample.domain.common.Entity<CustomerId>(customerId) {
+    private constructor(): this(CustomerId(), "", Contact())
+}
