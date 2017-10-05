@@ -5,8 +5,8 @@ import javax.persistence.*
 
 @Embeddable
 class ItemId(
-        override val value: Long?
-): Identifier<Long?>(value) {
+        override val value: String?
+): Identifier<String?>(value) {
     internal constructor(): this(value = null)
 }
 
@@ -15,7 +15,8 @@ class Item(
         @EmbeddedId
         @AttributeOverride(name = "value", column = Column(name = "item_id"))
         val itemId: ItemId,
+        val name: String,
         val price: Long
 ): net.straycalico.ecsample.domain.common.Entity<ItemId>(itemId) {
-    internal constructor(): this(ItemId(), 0)
+    internal constructor(): this(ItemId(), "", 0)
 }
