@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass
  * 代理主キーを隠蔽するためのスーパーレイヤ
  */
 @MappedSuperclass
-abstract class IdentifiedDomainObject() {
+abstract class IdentifiedDomainObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected val id: Long? = null
