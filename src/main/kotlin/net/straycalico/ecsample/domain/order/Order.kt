@@ -1,0 +1,27 @@
+package net.straycalico.ecsample.domain.order
+
+import net.straycalico.ecsample.domain.common.Identifier
+import net.straycalico.ecsample.domain.customer.Customer
+import javax.persistence.*
+
+@Embeddable
+class OrderId(
+        override val value: Long?
+): Identifier<Long?>(value) {
+    internal constructor(): this(value = null)
+}
+
+@Table(name = "`order`") // orderが予約語なので自動生成クエリだとこける
+@Entity
+class Order(
+        @EmbeddedId
+        @AttributeOverrides(
+                AttributeOverride(name = "value", column = Column(name = "order_id"))
+        )
+        val orderId: OrderId,
+        @OneToOne(cascade = arrayOf(CascadeType.PERSIST))
+        @JoinColumn(name = "customer_id")
+        val customer: Customer
+): net.straycalico.ecsample.domain.common.Entity<OrderId>(orderId) {
+    internal constructor(): this(OrderId(), Customer())
+}

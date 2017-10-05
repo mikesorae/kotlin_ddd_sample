@@ -1,16 +1,6 @@
 package net.straycalico.ecsample.domain.customer
 
-import net.straycalico.ecsample.domain.common.Identifier
-import java.io.Serializable
 import javax.persistence.*
-
-@Embeddable
-class CustomerId(
-        @Column(name = "customer_id")
-        override val value: Long?
-): Identifier<Long?>(value), Serializable {
-    internal constructor(): this(value = null)
-}
 
 @Embeddable
 data class Contact(
@@ -21,14 +11,13 @@ data class Contact(
 }
 
 /**
- * ECサイトの顧客エンティティ
+ * ECサイトの顧客を表す値オブジェクト
  *
  * @param name 名前
+ * @param contact [[Contact]]
  */
 @Entity
 class Customer(
-        @EmbeddedId
-        val customerId: CustomerId,
         val name: String,
         @Embedded
         @AttributeOverrides(
@@ -36,6 +25,10 @@ class Customer(
             AttributeOverride(name = "tel", column = Column(name = "tel"))
         )
         val contact: Contact
-): net.straycalico.ecsample.domain.common.Entity<CustomerId>(customerId) {
-    private constructor(): this(CustomerId(), "", Contact())
+) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+
+    internal constructor(): this("", Contact())
 }
