@@ -1,5 +1,6 @@
 package net.straycalico.ecsample.domain.customer
 
+import net.straycalico.ecsample.domain.order.Fullname
 import org.junit.Assert.*
 import org.junit.Test
 

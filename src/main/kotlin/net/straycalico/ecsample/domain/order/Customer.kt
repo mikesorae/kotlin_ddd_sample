@@ -1,4 +1,4 @@
-package net.straycalico.ecsample.domain.customer
+package net.straycalico.ecsample.domain.order
 
 import net.straycalico.ecsample.domain.common.IdentifiedDomainObject
 import javax.persistence.*

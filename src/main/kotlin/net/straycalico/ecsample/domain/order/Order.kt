@@ -1,7 +1,6 @@
 package net.straycalico.ecsample.domain.order
 
 import net.straycalico.ecsample.domain.common.Identifier
-import net.straycalico.ecsample.domain.customer.Customer
 import javax.persistence.*
 
 @Embeddable

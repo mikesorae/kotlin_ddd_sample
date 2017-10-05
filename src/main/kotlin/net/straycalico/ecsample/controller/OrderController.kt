@@ -1,8 +1,8 @@
 package net.straycalico.ecsample.controller
 
-import net.straycalico.ecsample.domain.customer.Contact
-import net.straycalico.ecsample.domain.customer.Customer
-import net.straycalico.ecsample.domain.customer.Fullname
+import net.straycalico.ecsample.domain.order.Contact
+import net.straycalico.ecsample.domain.order.Customer
+import net.straycalico.ecsample.domain.order.Fullname
 import net.straycalico.ecsample.domain.order.Order
 import net.straycalico.ecsample.domain.order.OrderId
 import net.straycalico.ecsample.domain.order.OrderRepository
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import java.util.*
 import javax.validation.Valid
-import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 @RestController
