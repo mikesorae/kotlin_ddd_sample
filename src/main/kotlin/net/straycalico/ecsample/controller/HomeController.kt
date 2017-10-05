@@ -7,7 +7,5 @@ import org.springframework.web.bind.annotation.RestController
 class HomeController {
 
     @GetMapping("")
-    fun index(): String {
-        return "hello"
-    }
+    fun index() = "hello"
 }
