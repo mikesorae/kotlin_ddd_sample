@@ -9,7 +9,7 @@ import javax.persistence.*
 private fun generateId() = UUID.randomUUID().toString()
 
 @Embeddable
-class CartId private constructor(
+data class CartId private constructor(
         override val value: String
 ): Identifier<String>(value) {
     constructor(): this(generateId())

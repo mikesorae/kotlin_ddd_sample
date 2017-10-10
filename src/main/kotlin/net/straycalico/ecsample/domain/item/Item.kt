@@ -5,7 +5,7 @@ import net.straycalico.ecsample.domain.common.Identifier
 import javax.persistence.*
 
 @Embeddable
-class ItemId(
+data class ItemId(
         override val value: String
 ): Identifier<String>(value) {
     internal constructor(): this(value = "")
