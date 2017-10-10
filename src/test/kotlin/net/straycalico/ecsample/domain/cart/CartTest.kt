@@ -9,26 +9,25 @@ class CartTest {
 
     @Test
     fun createCartId() {
-        val cartId = CartId(1)
-        assertEquals(1L, cartId.value)
+        val cartId = CartId()
+        assertNotNull(cartId.value)
     }
 
     @Test
     fun createCart() {
-        val cartId = CartId(1)
-        val cart = Cart(cartId)
-        assertEquals(1L, cart.cartId.value)
+        val cart = Cart()
+        assertNotNull(cart.cartId.value)
     }
 
     @Test
     fun currentItems() {
-        val cart = Cart(CartId(1))
+        val cart = Cart()
         assertEquals(0, cart.currentItems().size)
     }
 
     @Test
     fun addItem() {
-        val cart = Cart(CartId(1))
+        val cart = Cart()
         cart.addItem(ItemId("item1"))
         cart.addItem(ItemId("item2"))
         cart.addItem(ItemId("item2"))
@@ -37,7 +36,7 @@ class CartTest {
 
     @Test
     fun removeItem() {
-        val cart = Cart(CartId(1))
+        val cart = Cart()
         cart.addItem(ItemId("item1"))
         cart.addItem(ItemId("item2"))
         cart.addItem(ItemId("item3"))
