@@ -12,7 +12,7 @@ import javax.validation.Valid
 @RestController
 class CartController {
     data class CartForm(
-            val id: Long
+            val id: String
     )
 
     @Autowired
@@ -23,8 +23,7 @@ class CartController {
 
     @PostMapping("/carts")
     fun createCart(@Valid @RequestBody form: CartForm): Cart {
-        val cartId = CartId(form.id)
-        val cart = Cart(cartId)
+        val cart = Cart()
         return repository.saveAndFlush(cart)
     }
 }

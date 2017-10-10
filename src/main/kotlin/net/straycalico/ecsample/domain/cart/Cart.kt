@@ -2,22 +2,25 @@ package net.straycalico.ecsample.domain.cart
 
 import net.straycalico.ecsample.domain.common.Identifier
 import net.straycalico.ecsample.domain.item.ItemId
+import java.util.*
 import javax.persistence.*
 
+private fun generateId() = UUID.randomUUID().toString()
+
 @Embeddable
-class CartId(
-        override val value: Long?
-): Identifier<Long?>(value) {
-    internal constructor(): this(null)
+class CartId private constructor(
+        override val value: String?
+): Identifier<String?>(value) {
+    constructor(): this(generateId())
 }
 
 @Entity
-class Cart(
+class Cart private constructor(
         @EmbeddedId
         @AttributeOverride(name = "value", column = Column(name = "cart_id"))
         val cartId: CartId
 ): net.straycalico.ecsample.domain.common.Entity<CartId>(cartId) {
-    private constructor(): this(CartId())
+    constructor(): this(CartId())
 
     @ElementCollection
     private val items: MutableList<ItemId> = mutableListOf()
