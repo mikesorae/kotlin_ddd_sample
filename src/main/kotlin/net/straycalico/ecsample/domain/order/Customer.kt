@@ -1,6 +1,6 @@
 package net.straycalico.ecsample.domain.order
 
-import net.straycalico.ecsample.domain.common.IdentifiedDomainObject
+import net.straycalico.ecsample.domain.common.IdentifiedValueObject
 import javax.persistence.*
 
 @Embeddable
@@ -27,6 +27,6 @@ class Customer(
             AttributeOverride(name = "tel", column = Column(name = "tel"))
         )
         val contact: Contact
-):IdentifiedDomainObject() {
+):IdentifiedValueObject() {
     internal constructor(): this(Fullname("", ""), Contact())
 }
