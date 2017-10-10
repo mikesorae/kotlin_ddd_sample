@@ -9,7 +9,7 @@ import javax.persistence.*
 private fun generateId() = UUID.randomUUID().toString()
 
 @Embeddable
-data class CartId private constructor(
+data class CartId(
         override val value: String
 ): Identifier<String>(value) {
     constructor(): this(generateId())
@@ -26,7 +26,7 @@ class Cart private constructor(
     @ElementCollection
     private val items: MutableList<ItemId> = mutableListOf()
 
-    fun currentItems() = this.items.toMutableList()
+    fun currentItems() = this.items.toList()
 
     fun addItem(itemId: ItemId): Unit {
         if(!this.items.contains(itemId)) {
