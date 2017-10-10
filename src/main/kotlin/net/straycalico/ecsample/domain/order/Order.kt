@@ -14,7 +14,7 @@ class OrderId(
 @Table(name = "`order`") // orderが予約語なので自動生成クエリだとこける
 @Entity
 class Order(
-        @EmbeddedId
+        @Embedded
         @AttributeOverride(name = "value", column = Column(name = "order_id"))
         val orderId: OrderId,
         @OneToOne(cascade = arrayOf(CascadeType.ALL))

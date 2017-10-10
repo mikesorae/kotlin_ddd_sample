@@ -13,7 +13,7 @@ class ItemId(
 
 @Entity
 class Item(
-        @EmbeddedId
+        @Embedded
         @AttributeOverride(name = "value", column = Column(name = "item_id"))
         val itemId: ItemId,
         val name: String,

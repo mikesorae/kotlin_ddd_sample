@@ -17,7 +17,7 @@ class CartId private constructor(
 
 @Entity
 class Cart private constructor(
-        @EmbeddedId
+        @Embedded
         @AttributeOverride(name = "value", column = Column(name = "cart_id"))
         val cartId: CartId
 ): DomainEntity<CartId>(cartId) {
