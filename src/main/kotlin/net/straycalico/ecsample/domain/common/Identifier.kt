@@ -5,7 +5,7 @@ import java.io.Serializable
 /**
  * Entity識別子用クラス
  */
-abstract class Identifier<out T> (open val value: T): Serializable {
+abstract class Identifier<out T: Any> (open val value: T): Serializable {
     override fun equals(other: Any?): Boolean {
         return when (other) {
             is Identifier<*> -> this.value == other.value
@@ -14,6 +14,6 @@ abstract class Identifier<out T> (open val value: T): Serializable {
     }
 
     override fun hashCode(): Int {
-        return value?.let { it!!.hashCode() } ?: -1
+        return value.hashCode()
     }
 }

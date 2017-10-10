@@ -6,9 +6,9 @@ import javax.persistence.*
 
 @Embeddable
 class ItemId(
-        override val value: String?
-): Identifier<String?>(value) {
-    internal constructor(): this(value = null)
+        override val value: String
+): Identifier<String>(value) {
+    internal constructor(): this(value = "")
 }
 
 @Entity

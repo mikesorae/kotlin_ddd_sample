@@ -10,8 +10,8 @@ private fun generateId() = UUID.randomUUID().toString()
 
 @Embeddable
 class CartId private constructor(
-        override val value: String?
-): Identifier<String?>(value) {
+        override val value: String
+): Identifier<String>(value) {
     constructor(): this(generateId())
 }
 

@@ -6,9 +6,9 @@ import javax.persistence.*
 
 @Embeddable
 class OrderId(
-        override val value: Long?
-): Identifier<Long?>(value) {
-    internal constructor(): this(value = null)
+        override val value: Long
+): Identifier<Long>(value) {
+    internal constructor(): this(value = -1)
 }
 
 @Table(name = "`order`") // orderが予約語なので自動生成クエリだとこける
