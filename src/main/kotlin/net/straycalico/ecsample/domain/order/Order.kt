@@ -19,6 +19,6 @@ class Order(
         @OneToOne(cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name = "customer_id")
         val customer: Customer
-): net.straycalico.ecsample.domain.common.Entity<OrderId>(orderId) {
+): net.straycalico.ecsample.domain.common.DomainEntity<OrderId>(orderId) {
     internal constructor(): this(OrderId(), Customer())
 }

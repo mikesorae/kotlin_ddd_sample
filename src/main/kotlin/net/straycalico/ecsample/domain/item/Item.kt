@@ -17,6 +17,6 @@ class Item(
         val itemId: ItemId,
         val name: String,
         val price: Long
-): net.straycalico.ecsample.domain.common.Entity<ItemId>(itemId) {
+): net.straycalico.ecsample.domain.common.DomainEntity<ItemId>(itemId) {
     internal constructor(): this(ItemId(), "", 0)
 }

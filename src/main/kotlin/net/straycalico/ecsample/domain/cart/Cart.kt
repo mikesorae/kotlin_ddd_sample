@@ -19,7 +19,7 @@ class Cart private constructor(
         @EmbeddedId
         @AttributeOverride(name = "value", column = Column(name = "cart_id"))
         val cartId: CartId
-): net.straycalico.ecsample.domain.common.Entity<CartId>(cartId) {
+): net.straycalico.ecsample.domain.common.DomainEntity<CartId>(cartId) {
     constructor(): this(CartId())
 
     @ElementCollection
