@@ -1,5 +1,6 @@
 package net.straycalico.ecsample.domain.item
 
+import net.straycalico.ecsample.domain.common.DomainEntity
 import net.straycalico.ecsample.domain.common.Identifier
 import javax.persistence.*
 
@@ -17,6 +18,6 @@ class Item(
         val itemId: ItemId,
         val name: String,
         val price: Long
-): net.straycalico.ecsample.domain.common.DomainEntity<ItemId>(itemId) {
+): DomainEntity<ItemId>(itemId) {
     internal constructor(): this(ItemId(), "", 0)
 }

@@ -1,5 +1,6 @@
 package net.straycalico.ecsample.domain.cart
 
+import net.straycalico.ecsample.domain.common.DomainEntity
 import net.straycalico.ecsample.domain.common.Identifier
 import net.straycalico.ecsample.domain.item.ItemId
 import java.util.*
@@ -19,7 +20,7 @@ class Cart private constructor(
         @EmbeddedId
         @AttributeOverride(name = "value", column = Column(name = "cart_id"))
         val cartId: CartId
-): net.straycalico.ecsample.domain.common.DomainEntity<CartId>(cartId) {
+): DomainEntity<CartId>(cartId) {
     constructor(): this(CartId())
 
     @ElementCollection

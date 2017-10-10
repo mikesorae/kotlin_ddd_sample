@@ -1,5 +1,6 @@
 package net.straycalico.ecsample.domain.order
 
+import net.straycalico.ecsample.domain.common.DomainEntity
 import net.straycalico.ecsample.domain.common.Identifier
 import javax.persistence.*
 
@@ -19,6 +20,6 @@ class Order(
         @OneToOne(cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name = "customer_id")
         val customer: Customer
-): net.straycalico.ecsample.domain.common.DomainEntity<OrderId>(orderId) {
+): DomainEntity<OrderId>(orderId) {
     internal constructor(): this(OrderId(), Customer())
 }
