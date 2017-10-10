@@ -18,7 +18,7 @@ data class Contact(
  * @param contact [[Contact]]
  */
 @Entity
-class Customer(
+data class Customer(
         @Convert(converter = FullnameConverter::class)
         val name: Fullname,
         @Embedded
