@@ -15,7 +15,7 @@ abstract class DomainEntity<out ID : Identifier<*>>
     }
 
     override fun hashCode(): Int {
-        return identifier?.let { it.hashCode() } ?: super.hashCode() // TODO もう少しまともに
+        return this.identifier?.hashCode() ?: super.hashCode()
     }
 
     fun identifier(): ID? = this.identifier
